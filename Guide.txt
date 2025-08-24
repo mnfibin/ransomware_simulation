@@ -1,0 +1,12 @@
+cd Desktop
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.23.4.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+go version
+cd
+mkdir test
+	//copy .sh file to test
+chmod 777 setup-env.sh
+./setup-env.sh
+go run encryption.go
+env GOOS=windows GOARCH=amd64 go build encryption.go
+env GOOS=windows GOARCH=amd64 go build decryption.go
